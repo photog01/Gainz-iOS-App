@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 
 <html lang="en">
@@ -9,8 +8,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="GAINZ">
 <title>GAINZ</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap');</style>
 <style>
   :root {
     --bg: #0a0a0a;
@@ -203,16 +201,23 @@ border: 1px solid rgba(124,58,237,0.3);
 
 /* WORKOUT SESSION */
 #workout-session {
-display: none;
+visibility: hidden;
+opacity: 0;
 position: fixed;
 inset: 0;
 background: var(–bg);
 z-index: 200;
 overflow-y: auto;
 padding-bottom: 100px;
+transition: opacity 0.15s;
+pointer-events: none;
 }
 
-#workout-session.active { display: block; }
+#workout-session.active {
+visibility: visible;
+opacity: 1;
+pointer-events: all;
+}
 
 .session-header {
 padding: 16px 20px;
@@ -447,13 +452,21 @@ background: var(–surface);
 border-top: 2px solid var(–accent);
 padding: 12px 20px;
 padding-bottom: calc(12px + env(safe-area-inset-bottom));
-display: none;
+display: flex;
+visibility: hidden;
+opacity: 0;
 align-items: center;
 gap: 16px;
 z-index: 300;
+transition: opacity 0.15s;
+pointer-events: none;
 }
 
-#rest-timer.active { display: flex; }
+#rest-timer.active {
+visibility: visible;
+opacity: 1;
+pointer-events: all;
+}
 
 .timer-display {
 font-family: ‘Barlow Condensed’, sans-serif;
@@ -482,7 +495,6 @@ cursor: pointer;
 
 .timer-btn.skip { color: var(–text2); }
 
-/* FINISH BTN */
 .finish-btn {
 position: fixed;
 bottom: 0; left: 0; right: 0;
@@ -498,10 +510,16 @@ letter-spacing: 0.05em;
 text-transform: uppercase;
 cursor: pointer;
 z-index: 250;
-display: none;
+visibility: hidden;
+opacity: 0;
+pointer-events: none;
 }
 
-.finish-btn.visible { display: block; }
+.finish-btn.visible {
+visibility: visible;
+opacity: 1;
+pointer-events: all;
+}
 
 /* PROGRESS PAGE */
 .metric-grid {
